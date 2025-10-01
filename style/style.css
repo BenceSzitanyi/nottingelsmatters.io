@@ -1,0 +1,172 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+}
+
+.hero-section { grid-area: 1 / 1 / 2 / 6; }
+.side-bar { grid-area: 2 / 1 / 6 / 2; }
+.content { grid-area: 2 / 2 / 6 / 6; }
+
+.container{
+    max-width: 1111px;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
+nav{
+    background-color: #78A1BB;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    /*justify-content: space-around;*/
+}
+
+nav a{
+    display: inline-block;
+    padding: 2px 5px 2px 5px;
+    margin: 6px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    background-color: #EBF5EE;
+}
+
+nav a:hover{
+    border-radius: 5px;
+    transform: translateY(2px);
+    box-shadow: inset 0px 6px 10px 0px #000000
+}
+
+.side-bar{
+    background-color: #FFA630;
+}
+
+.content{
+    background-color: #EBF5EE;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.mb-0 {
+    /* Átmenet beállítása: minden változásra 0.4 másodperc alatt reagáljon, smooth */
+    transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+    display: inline-block; /* Fontos a transform (forgás/mozgás) miatt */
+    color: #0d6efd; /* Kék szín az alapértelmezett fehér/szürke helyett */
+}
+
+.mb-0:hover {
+    /* Látványos hatás: 360 fokban megfordul és kicsit feljebb tolódik */
+    transform: rotate(360deg) translateY(-5px);
+    color: #198754; /* Zöldre vált, miután megfordult */
+}
+
+.side-bar .list-group-item-action {
+    transition: box-shadow 0.3s ease-out, transform 0.1s ease-out;
+}
+
+/* Hover effektus: Ha az egér fölé viszi a felhasználó */
+.side-bar .list-group-item-action:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    background-color: #f0f0f0; 
+}
+
+
+.inline-with-image {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 1.5rem 0;
+}
+
+.inline-with-image p {
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.inline-with-image img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    flex-shrink: 0;
+}
+
+.inline-with-image img:hover {
+    max-width: 300px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    flex-shrink: 0;
+}
+
+.leave-academy{
+    display: block;
+    margin: 0 auto;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Media query közepes és nagy képernyőre*/
+@media (min-width: 768px) {
+    .sidebar {
+        display: block !important; 
+        width: 250px;
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .hero-section .carousel-item img {
+        height: 450px; /* Vagy amilyen magasságot szeretne */
+        object-fit: cover; /* A kép kitölti a rendelkezésre álló helyet, vágással */
+    }
+
+    /* A fő tartalom (ha van) eltolása, hogy helyet adjon a sidebar-nak.
+       (Feltételezi, hogy a fő tartalom egy külön konténerben van) */
+    /* Példa: Ha van egy <main> tartalom, ami a sidebartól jobbra van: */
+    /* main {
+        margin-left: 250px; 
+    } */
+}
+
+
+/*Media query kis képernyőre*/
+@media (max-width: 767px) {
+    
+    /* A Hero Section képeinek magasságát korlátozzuk mobil nézetben,
+       hogy ne foglaljon túl nagy helyet a képernyőből */
+    .hero-section .carousel-item img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    /* A footer oszlopainak (amik korábban 4-es szélességűek voltak)
+    megadjuk a teljes szélességet (12-es), bár a Bootstrap már eleve
+    így rendezi, de ez biztosítja, hogy a szöveg jól olvasható maradjon */
+    .footer .col-md-4 {
+        width: 100%;
+        text-align: left; /* Középre igazítás megszüntetése mobilnézetben */
+    }
+}
